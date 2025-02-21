@@ -1,6 +1,6 @@
 import json
 from dataclasses import dataclass, fields
-from typing import Self, List, Dict, Any, Bool
+from typing import Self, List, Dict, Any
 from pprint import pprint
 
 @dataclass
@@ -22,7 +22,7 @@ class City:
     subject: str
 
     @classmethod
-    def validate_city_data(cls, city_data: Dict[str, Any]) -> Bool:
+    def validate_city_data(cls, city_data: Dict[str, Any]) -> bool:
         """
         Метод валидации данных о городе. Проверяет, что все необходимые поля присутствуют в словаре.
         :param city_data: Словарь с данными о городе.
@@ -67,12 +67,12 @@ class CitiesIterator:
         self.cities = self.all_cities.copy()
         self.index = 0
 
-    def __iter__(self)-> Self:
+    def __iter__(self):
         """
         Делает класс итератором.
         :return: self. 
         """
-        return Self
+        return self
     
     def __next__(self) -> City:
         """
@@ -118,5 +118,6 @@ pprint(next(c_iter))
 c_iter.set_population_filter(20000, 22000)
 c_iter.sort_by_parameter("district")
 pprint(list(c_iter), sort_dicts=False)
+print("\n Отсечка \n")
 c_iter.sort_by_parameter("subject")
 pprint(list(c_iter), sort_dicts=False)
